@@ -2,5 +2,19 @@
  
 {% block body %}
     Bienvenue {{ app.user.username }} !
-        
+    {% for project in projects %}
+        <tr>
+            <td>{{ project.id }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>
+                <a href="{{ path('projects_show', {'id': project.id}) }}">show</a>
+                <a href="{{ path('projects_edit', {'id': project.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
 {% endblock %}
