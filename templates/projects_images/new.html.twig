@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProjectsImages{% endblock %}
+
+{% block body %}
+    <h1>Create new ProjectsImages</h1>
+
+    {{ include('projects_images/_form.html.twig') }}
+
+    <a href="{{ path('projects_images_index') }}">back to list</a>
+{% endblock %}

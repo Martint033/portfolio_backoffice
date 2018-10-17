@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CodeLink{% endblock %}
+
+{% block body %}
+    <h1>Edit CodeLink</h1>
+
+    {{ include('code_link/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('code_link_index') }}">back to list</a>
+
+    {{ include('code_link/_delete_form.html.twig') }}
+{% endblock %}

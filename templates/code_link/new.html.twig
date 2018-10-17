@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CodeLink{% endblock %}
+
+{% block body %}
+    <h1>Create new CodeLink</h1>
+
+    {{ include('code_link/_form.html.twig') }}
+
+    <a href="{{ path('code_link_index') }}">back to list</a>
+{% endblock %}

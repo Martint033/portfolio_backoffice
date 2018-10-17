@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contexte index{% endblock %}
+
+{% block body %}
+    <h1>Contexte index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contexte in contextes %}
+            <tr>
+                <td>{{ contexte.id }}</td>
+                <td>{{ contexte.nom }}</td>
+                <td>{{ contexte.dateDebut ? contexte.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ contexte.dateFin ? contexte.dateFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('contexte_show', {'id': contexte.id}) }}">show</a>
+                    <a href="{{ path('contexte_edit', {'id': contexte.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contexte_new') }}">Create new</a>
+{% endblock %}

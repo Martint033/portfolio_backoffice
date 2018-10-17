@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DemoLink{% endblock %}
+
+{% block body %}
+    <h1>DemoLink</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demo_link.id }}</td>
+            </tr>
+            <tr>
+                <th>Demo_link</th>
+                <td>{{ demo_link.demoLink }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('demo_link_index') }}">back to list</a>
+
+    <a href="{{ path('demo_link_edit', {'id': demo_link.id}) }}">edit</a>
+
+    {{ include('demo_link/_delete_form.html.twig') }}
+{% endblock %}

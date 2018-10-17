@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DemoLink index{% endblock %}
+
+{% block body %}
+    <h1>DemoLink index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Demo_link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demo_link in demo_links %}
+            <tr>
+                <td>{{ demo_link.id }}</td>
+                <td>{{ demo_link.demoLink }}</td>
+                <td>
+                    <a href="{{ path('demo_link_show', {'id': demo_link.id}) }}">show</a>
+                    <a href="{{ path('demo_link_edit', {'id': demo_link.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('demo_link_new') }}">Create new</a>
+{% endblock %}

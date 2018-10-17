@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProjectsContext index{% endblock %}
+
+{% block body %}
+    <h1>ProjectsContext index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for projects_context in projects_contexts %}
+            <tr>
+                <td>{{ projects_context.id }}</td>
+                <td>
+                    <a href="{{ path('projects_context_show', {'id': projects_context.id}) }}">show</a>
+                    <a href="{{ path('projects_context_edit', {'id': projects_context.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('projects_context_new') }}">Create new</a>
+{% endblock %}

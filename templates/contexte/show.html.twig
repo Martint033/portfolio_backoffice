@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contexte{% endblock %}
+
+{% block body %}
+    <h1>Contexte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contexte.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ contexte.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ contexte.dateDebut ? contexte.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ contexte.dateFin ? contexte.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contexte_index') }}">back to list</a>
+
+    <a href="{{ path('contexte_edit', {'id': contexte.id}) }}">edit</a>
+
+    {{ include('contexte/_delete_form.html.twig') }}
+{% endblock %}
