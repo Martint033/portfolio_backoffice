@@ -111,4 +111,10 @@ class Contexte
 
         return $this;
     }
+
+    // to correct the bug : Object of class App\Entity\Contexte could not be converted to string
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->nom;
+    }
 }

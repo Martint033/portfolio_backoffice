@@ -15,7 +15,7 @@ class ImagesType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('link')
-            ->add('projectsImages')
+            ->add('projects')
         ;
     }
 

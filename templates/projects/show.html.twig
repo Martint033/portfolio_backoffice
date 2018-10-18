@@ -19,6 +19,30 @@
                 <th>Description</th>
                 <td>{{ project.description }}</td>
             </tr>
+            <tr>
+                <th>Context</th>
+                {% for element in project.context %}
+                    <td>{{ element }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Démos</th>
+                {% for element in project.demo %}
+                    <td>{{ element }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Code</th>
+                {% for element in project.code %}
+                    <td>{{ element }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Images</th>
+                {% for element in project.images %}
+                    <td>{{ element }}</td>
+                {% endfor %}
+            </tr>
         </tbody>
     </table>
 

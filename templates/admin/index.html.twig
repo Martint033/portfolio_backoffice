@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
  
 {% block body %}
-    Bienvenue {{ app.user.username }} !
+    <h1>Bienvenue {{ app.user.username }} !</h1>
 
     <p><a href="/projects">Liens vers les projets</a></p>
     <p><a href="/code/link">Liens vers les codes</a></p>
     <p><a href="/contexte">Liens vers les contextes</a></p>
     <p><a href="/demo/link">Liens vers les démos</a></p>
     <p><a href="/images">Liens vers les images</a></p>
-    <p><a href="/projects/code">Liens vers les liaisons projets/codes</a></p>
-    <p><a href="/projects/demo">Liens vers les liaisons projets/démos</a></p>
-    <p><a href="/projects/images">Liens vers les liaisons projets/images</a></p>
-    
 
 {% endblock %}

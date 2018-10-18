@@ -13,7 +13,7 @@ class CodeLinkType extends AbstractType
     {
         $builder
             ->add('link')
-            ->add('projectsCode')
+            ->add('projects')
         ;
     }
 

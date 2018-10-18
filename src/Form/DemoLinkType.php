@@ -13,7 +13,7 @@ class DemoLinkType extends AbstractType
     {
         $builder
             ->add('demo_link')
-            ->add('projectsDemo')
+            ->add('projects')
         ;
     }
 

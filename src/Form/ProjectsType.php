@@ -15,6 +15,9 @@ class ProjectsType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('context')
+            ->add('demo')
+            ->add('code')
+            ->add('images')
         ;
     }
 
