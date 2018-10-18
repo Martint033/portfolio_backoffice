@@ -34,13 +34,13 @@ class Contexte
     private $date_fin;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProjectsContext", mappedBy="context")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Projects", mappedBy="context")
      */
-    private $projectsContexts;
+    private $projects;
 
     public function __construct()
     {
-        $this->projectsContexts = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,28 +85,28 @@ class Contexte
     }
 
     /**
-     * @return Collection|ProjectsContext[]
+     * @return Collection|Projects[]
      */
-    public function getProjectsContexts(): Collection
+    public function getProjects(): Collection
     {
-        return $this->projectsContexts;
+        return $this->projects;
     }
 
-    public function addProjectsContext(ProjectsContext $projectsContext): self
+    public function addProject(Projects $project): self
     {
-        if (!$this->projectsContexts->contains($projectsContext)) {
-            $this->projectsContexts[] = $projectsContext;
-            $projectsContext->addContext($this);
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addContext($this);
         }
 
         return $this;
     }
 
-    public function removeProjectsContext(ProjectsContext $projectsContext): self
+    public function removeProject(Projects $project): self
     {
-        if ($this->projectsContexts->contains($projectsContext)) {
-            $this->projectsContexts->removeElement($projectsContext);
-            $projectsContext->removeContext($this);
+        if ($this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+            $project->removeContext($this);
         }
 
         return $this;

@@ -22,9 +22,10 @@ class CodeLink
     private $link;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ProjectsCode", inversedBy="link")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Projects", inversedBy="code")
      */
-    private $projectsCode;
+    private $projects;
+
 
     public function getId(): ?int
     {
@@ -43,14 +44,14 @@ class CodeLink
         return $this;
     }
 
-    public function getProjectsCode(): ?ProjectsCode
+    public function getProjects(): ?Projects
     {
-        return $this->projectsCode;
+        return $this->projects;
     }
 
-    public function setProjectsCode(?ProjectsCode $projectsCode): self
+    public function setProjects(?Projects $projects): self
     {
-        $this->projectsCode = $projectsCode;
+        $this->projects = $projects;
 
         return $this;
     }

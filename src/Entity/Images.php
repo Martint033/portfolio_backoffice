@@ -32,9 +32,10 @@ class Images
     private $link;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ProjectsImages", inversedBy="image")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Projects", inversedBy="images")
      */
-    private $projectsImages;
+    private $projects;
+
 
     public function getId(): ?int
     {
@@ -77,14 +78,14 @@ class Images
         return $this;
     }
 
-    public function getProjectsImages(): ?ProjectsImages
+    public function getProjects(): ?Projects
     {
-        return $this->projectsImages;
+        return $this->projects;
     }
 
-    public function setProjectsImages(?ProjectsImages $projectsImages): self
+    public function setProjects(?Projects $projects): self
     {
-        $this->projectsImages = $projectsImages;
+        $this->projects = $projects;
 
         return $this;
     }

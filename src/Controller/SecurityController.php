@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/magicConnexion", name="connexion")
+     * @Route("/", name="connexion")
      */
     public function connexion(Request $request, AuthenticationUtils $authenticationUtils)
     {
@@ -58,7 +58,7 @@ class SecurityController extends AbstractController
 
        //
      /**
-     * @Route("/", name="index")
+     * @Route("/index", name="index")
      */
     public function index()
     {

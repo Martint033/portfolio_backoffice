@@ -29,32 +29,33 @@ class Projects
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProjectsDemo", mappedBy="projet_id", orphanRemoval=true)
-     */
-    private $projectsDemos;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProjectsContext", mappedBy="projects")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Contexte", inversedBy="projects")
      */
     private $context;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProjectsImages", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="App\Entity\DemoLink", mappedBy="projects")
      */
-    private $projectsImages;
+    private $demo;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProjectsCode", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="App\Entity\CodeLink", mappedBy="projects")
      */
-    private $projectsCodes;
+    private $code;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="projects")
+     */
+    private $images;
 
     public function __construct()
     {
-        $this->projectsDemos = new ArrayCollection();
         $this->context = new ArrayCollection();
-        $this->projectsImages = new ArrayCollection();
-        $this->projectsCodes = new ArrayCollection();
+        $this->demo = new ArrayCollection();
+        $this->code = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -86,89 +87,56 @@ class Projects
     }
 
     /**
-     * @return Collection|ProjectsDemo[]
-     */
-    public function getProjectsDemos(): Collection
-    {
-        return $this->projectsDemos;
-    }
-
-    public function addProjectsDemo(ProjectsDemo $projectsDemo): self
-    {
-        if (!$this->projectsDemos->contains($projectsDemo)) {
-            $this->projectsDemos[] = $projectsDemo;
-            $projectsDemo->setProjetId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProjectsDemo(ProjectsDemo $projectsDemo): self
-    {
-        if ($this->projectsDemos->contains($projectsDemo)) {
-            $this->projectsDemos->removeElement($projectsDemo);
-            // set the owning side to null (unless already changed)
-            if ($projectsDemo->getProjetId() === $this) {
-                $projectsDemo->setProjetId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|ProjectsContext[]
+     * @return Collection|Contexte[]
      */
     public function getContext(): Collection
     {
         return $this->context;
     }
 
-    public function addContext(ProjectsContext $context): self
+    public function addContext(Contexte $context): self
     {
         if (!$this->context->contains($context)) {
             $this->context[] = $context;
-            $context->addProject($this);
         }
 
         return $this;
     }
 
-    public function removeContext(ProjectsContext $context): self
+    public function removeContext(Contexte $context): self
     {
         if ($this->context->contains($context)) {
             $this->context->removeElement($context);
-            $context->removeProject($this);
         }
 
         return $this;
     }
 
     /**
-     * @return Collection|ProjectsImages[]
+     * @return Collection|DemoLink[]
      */
-    public function getProjectsImages(): Collection
+    public function getDemo(): Collection
     {
-        return $this->projectsImages;
+        return $this->demo;
     }
 
-    public function addProjectsImage(ProjectsImages $projectsImage): self
+    public function addDemo(DemoLink $demo): self
     {
-        if (!$this->projectsImages->contains($projectsImage)) {
-            $this->projectsImages[] = $projectsImage;
-            $projectsImage->setProject($this);
+        if (!$this->demo->contains($demo)) {
+            $this->demo[] = $demo;
+            $demo->setProjects($this);
         }
 
         return $this;
     }
 
-    public function removeProjectsImage(ProjectsImages $projectsImage): self
+    public function removeDemo(DemoLink $demo): self
     {
-        if ($this->projectsImages->contains($projectsImage)) {
-            $this->projectsImages->removeElement($projectsImage);
+        if ($this->demo->contains($demo)) {
+            $this->demo->removeElement($demo);
             // set the owning side to null (unless already changed)
-            if ($projectsImage->getProject() === $this) {
-                $projectsImage->setProject(null);
+            if ($demo->getProjects() === $this) {
+                $demo->setProjects(null);
             }
         }
 
@@ -176,30 +144,61 @@ class Projects
     }
 
     /**
-     * @return Collection|ProjectsCode[]
+     * @return Collection|CodeLink[]
      */
-    public function getProjectsCodes(): Collection
+    public function getCode(): Collection
     {
-        return $this->projectsCodes;
+        return $this->code;
     }
 
-    public function addProjectsCode(ProjectsCode $projectsCode): self
+    public function addCode(CodeLink $code): self
     {
-        if (!$this->projectsCodes->contains($projectsCode)) {
-            $this->projectsCodes[] = $projectsCode;
-            $projectsCode->setProject($this);
+        if (!$this->code->contains($code)) {
+            $this->code[] = $code;
+            $code->setProjects($this);
         }
 
         return $this;
     }
 
-    public function removeProjectsCode(ProjectsCode $projectsCode): self
+    public function removeCode(CodeLink $code): self
     {
-        if ($this->projectsCodes->contains($projectsCode)) {
-            $this->projectsCodes->removeElement($projectsCode);
+        if ($this->code->contains($code)) {
+            $this->code->removeElement($code);
             // set the owning side to null (unless already changed)
-            if ($projectsCode->getProject() === $this) {
-                $projectsCode->setProject(null);
+            if ($code->getProjects() === $this) {
+                $code->setProjects(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProjects($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProjects() === $this) {
+                $image->setProjects(null);
             }
         }
 

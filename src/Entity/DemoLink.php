@@ -22,9 +22,10 @@ class DemoLink
     private $demo_link;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\ProjectsDemo", mappedBy="link_id", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Projects", inversedBy="demo")
      */
-    private $projectsDemo;
+    private $projects;
+    
 
     public function getId(): ?int
     {
@@ -43,19 +44,14 @@ class DemoLink
         return $this;
     }
 
-    public function getProjectsDemo(): ?ProjectsDemo
+    public function getProjects(): ?Projects
     {
-        return $this->projectsDemo;
+        return $this->projects;
     }
 
-    public function setProjectsDemo(ProjectsDemo $projectsDemo): self
+    public function setProjects(?Projects $projects): self
     {
-        $this->projectsDemo = $projectsDemo;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $projectsDemo->getLinkId()) {
-            $projectsDemo->setLinkId($this);
-        }
+        $this->projects = $projects;
 
         return $this;
     }
