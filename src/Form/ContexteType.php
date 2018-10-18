@@ -15,6 +15,7 @@ class ContexteType extends AbstractType
             ->add('nom')
             ->add('date_debut')
             ->add('date_fin')
+            ->add('projects')
         ;
     }
 
